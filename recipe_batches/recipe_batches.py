@@ -11,6 +11,14 @@ def recipe_batches(recipe, ingredients):
             return 0
 
     # General case...
+
+    # batches = 0
+    # Loop through each key in recipe
+    # if recipe[key] <= ingredients[key]:
+    #    b_ingrediants = math.floor(ingredients[key] / recipe[key])
+    #    if b_ingrediants < batches or batches == 0:
+    #       batches = b_ingrediants
+    # else return 0
     pass
 
 

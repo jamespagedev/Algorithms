@@ -7,19 +7,20 @@ def recipe_batches(recipe, ingredients):
     # Edge case - check to see if ingredients dict has all of the keys from recipe dict
     # if not, return 0
     for key in recipe:
-        if key in ingredients.keys():
+        if key not in ingredients.keys():
             return 0
 
     # General case...
 
-    # batches = 0
-    # Loop through each key in recipe
-    # if recipe[key] <= ingredients[key]:
-    #    b_ingrediants = math.floor(ingredients[key] / recipe[key])
-    #    if b_ingrediants < batches or batches == 0:
-    #       batches = b_ingrediants
-    # else return 0
-    pass
+    batches = 0
+    for key, r_value in recipe.items():
+        if r_value <= ingredients[key]:
+            b_ingrediants = math.floor(ingredients[key] / r_value)
+            if b_ingrediants < batches or batches == 0:
+                batches = b_ingrediants
+        else:
+            return 0
+    return batches
 
 
 if __name__ == '__main__':
@@ -30,5 +31,3 @@ if __name__ == '__main__':
     print("{batches} batches can be made from the available ingredients: {ingredients}.".format(
         batches=recipe_batches(recipe, ingredients), ingredients=ingredients))
     pass
-# print(recipe_batches({'milk': 100, 'flour': 4, 'sugar': 10, 'butter': 5}, {
-#     'milk': 1288, 'flour': 9, 'sugar': 95}))

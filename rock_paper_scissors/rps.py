@@ -21,21 +21,19 @@ def rock_paper_scissors(n):
     possible_plays = []
 
     # use a recursive helper method called get_unused_play
-    def get_unused_play(play, exponentNumber):
-        for hand in rps:
-            play.append(hand)
-            if exponentNumber == n:
-                possible_plays.append(play)
-            else:
-                get_unused_play(play, exponentNumber + 1)
+    def get_unused_play(exponent, combos):
+        if exponent == 0:
+            possible_plays.append(combos)
+            return
 
-            # https://medium.com/@junshengpierre/recursion-rockpaperscissors-js-b071a334080a
-            # debug later, move onto next problem
+        for hand in rps:
+            get_unused_play(exponent - 1, combos + [hand])
 
     # call recursive helper method
-    get_unused_play([], 1)
+    get_unused_play(n, [])
 
     # return possible_plays
+    return possible_plays
 
 
 if __name__ == "__main__":
